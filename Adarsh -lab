@@ -1,0 +1,770 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADARSH // CYBER LAB</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+    --bg: #070b0d;
+    --panel: #0d1415;
+    --green: #b6ff5c;
+    --text: #edf4ec;
+    --muted: #89958d;
+    --border: rgba(182,255,92,.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.container {
+    width: min(1160px, 90%);
+    margin: auto;
+}
+
+/* BACKGROUND */
+
+.background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse at 75% 20%, #a5ff5c12, transparent 35%),
+      radial-gradient(ellipse at 15% 80%, #1b754b13, transparent 35%);
+}
+
+.grid-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .13;
+    background-image:
+      linear-gradient(#a5ff5c20 1px, transparent 1px),
+      linear-gradient(90deg, #a5ff5c20 1px, transparent 1px);
+    background-size: 55px 55px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+/* NAVBAR */
+
+nav {
+    height: 78px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: #070b0de8;
+    backdrop-filter: blur(18px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(1160px, 90%);
+    margin: auto;
+}
+
+.brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.brand span {
+    color: var(--green);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    color: #aab5ad;
+    font-size: 13px;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+.nav-button {
+    border: 1px solid var(--green);
+    color: var(--green);
+    background: transparent;
+    padding: 11px 17px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.nav-button:hover {
+    background: var(--green);
+    color: #080d08;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 680px;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 55px;
+    padding-top: 70px;
+    padding-bottom: 90px;
+}
+
+.eyebrow {
+    color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 27px;
+}
+
+.eyebrow::before {
+    content: "● ";
+}
+
+.hero h1 {
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: 1.04;
+    letter-spacing: -5px;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero-description {
+    max-width: 490px;
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 15px;
+    margin-top: 25px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.primary-btn {
+    display: inline-block;
+    padding: 15px 23px;
+    background: var(--green);
+    color: #0b1108;
+    font-size: 13px;
+    font-weight: 800;
+    border: 1px solid var(--green);
+    transition: .25s;
+}
+
+.primary-btn:hover {
+    box-shadow: 0 0 30px #b6ff5c45;
+    transform: translateY(-3px);
+}
+
+.secondary-btn {
+    padding: 15px 23px;
+    border: 1px solid #39453d;
+    color: #dce6dc;
+    font-size: 13px;
+    transition: .25s;
+}
+
+.secondary-btn:hover {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+/* TERMINAL */
+
+.terminal {
+    background: #0b1111;
+    border: 1px solid #304132;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 25px 90px #0009, 0 0 45px #a5ff5c0a;
+    transform: perspective(1000px) rotateY(-3deg);
+}
+
+.terminal-top {
+    height: 46px;
+    background: #131b19;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 1px solid #26352a;
+    gap: 7px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.red { background: #ff5d58; }
+.yellow { background: #ffbd4a; }
+.green { background: #49d77c; }
+
+.terminal-title {
+    margin-left: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #829187;
+}
+
+.terminal-body {
+    padding: 26px 22px;
+    min-height: 300px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 2.2;
+}
+
+.terminal-line {
+    color: #89998c;
+}
+
+.terminal-line span {
+    color: var(--green);
+}
+
+.terminal-line .blue {
+    color: #75c9ff;
+}
+
+.terminal-line .white {
+    color: #e6eee6;
+}
+
+.cursor {
+    display: inline-block;
+    width: 7px;
+    height: 14px;
+    background: var(--green);
+    vertical-align: middle;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* STATUS BAR */
+
+.status-bar {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+}
+
+.status-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.status-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.status-item strong {
+    display: block;
+    color: var(--green);
+    font-size: 17px;
+    margin-top: 8px;
+}
+
+/* SECTION */
+
+.section {
+    padding: 105px 0;
+}
+
+.section-label {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--green);
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.section-heading {
+    font-size: clamp(30px, 5vw, 45px);
+    letter-spacing: -2px;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 550px;
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 45px;
+}
+
+.card {
+    background: linear-gradient(145deg, #111a16, #0b1111);
+    border: 1px solid #29382c;
+    padding: 28px;
+    min-height: 220px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: #a5ff5c85;
+    box-shadow: 0 15px 40px #0006;
+}
+
+.card-number {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--green);
+    font-size: 12px;
+}
+
+.card h3 {
+    margin-top: 32px;
+    font-size: 19px;
+}
+
+.card p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.card-arrow {
+    display: inline-block;
+    color: var(--green);
+    margin-top: 20px;
+    font-size: 13px;
+}
+
+/* ABOUT */
+
+.about-box {
+    background: linear-gradient(120deg, #142018, #0d1312);
+    border: 1px solid var(--border);
+    padding: 45px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-box h2 {
+    font-size: 35px;
+    line-height: 1.2;
+}
+
+.about-box h2 span {
+    color: var(--green);
+}
+
+.about-box p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+/* NOTICE */
+
+.notice {
+    border-left: 3px solid var(--green);
+    background: #101914;
+    padding: 25px;
+    margin-top: 45px;
+}
+
+.notice h3 {
+    font-size: 14px;
+    margin-bottom: 9px;
+    color: var(--green);
+}
+
+.notice p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 35px 0;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: #738078;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+    .nav-links { display: none; }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding-top: 70px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    .terminal {
+        transform: none;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .about-box {
+        grid-template-columns: 1fr;
+        padding: 28px;
+    }
+
+    .section {
+        padding: 75px 0;
+    }
+}
+
+@media(max-width: 420px) {
+    .brand { font-size: 15px; }
+    .nav-button { padding: 9px 11px; font-size: 10px; }
+    .terminal-body { font-size: 9px; padding: 20px 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="grid-bg"></div>
+
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="brand">ADARSH<span>_</span>LAB</a>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Modules</a>
+            <a href="#about">About</a>
+        </div>
+
+        <a href="#services" class="nav-button">EXPLORE LAB ↗</a>
+    </div>
+</nav>
+
+<main>
+
+<section class="hero container" id="home">
+
+    <div>
+        <div class="eyebrow">INDEPENDENT CYBERSECURITY LAB</div>
+
+        <h1>
+            THINK<br>
+            <span>LIKE A</span><br>
+            HACKER.
+        </h1>
+
+        <p class="hero-description">
+            Explore the world of cybersecurity.
+            Understand how the web works, discover security
+            concepts and build your skills through controlled
+            educational challenges.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#services" class="primary-btn">
+                EXPLORE THE LAB ↗
+            </a>
+
+            <a href="#about" class="secondary-btn">
+                DISCOVER MORE
+            </a>
+        </div>
+    </div>
+
+    <div class="terminal">
+        <div class="terminal-top">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+            <div class="terminal-title">adarsh@security-lab:~</div>
+        </div>
+
+        <div class="terminal-body" id="terminal">
+            <div class="terminal-line">
+                <span>adarsh@lab</span>:~$ initialize_lab
+            </div>
+            <div class="terminal-line">
+                <span class="blue">[INFO]</span>
+                Starting educational environment...
+            </div>
+            <div class="terminal-line">
+                <span class="blue">[INFO]</span>
+                Loading security modules...
+            </div>
+            <div class="terminal-line">
+                <span>[OK]</span>
+                HTTP fundamentals ready.
+            </div>
+            <div class="terminal-line">
+                <span>[OK]</span>
+                API learning module ready.
+            </div>
+            <div class="terminal-line">
+                <span>[OK]</span>
+                Practice environment initialized.
+            </div>
+            <br>
+            <div class="terminal-line">
+                <span class="white">System message:</span>
+            </div>
+            <div class="terminal-line">
+                Welcome to Adarsh Security Lab.
+            </div>
+            <div class="terminal-line">
+                <span>adarsh@lab</span>:~$ <span class="cursor"></span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div class="status-bar">
+    <div class="container status-inner">
+        <div class="status-item">
+            PLATFORM
+            <strong>EDUCATIONAL</strong>
+        </div>
+        <div class="status-item">
+            ENVIRONMENT
+            <strong>CONTROLLED LAB</strong>
+        </div>
+        <div class="status-item">
+            LEARNING
+            <strong>WEB SECURITY</strong>
+        </div>
+        <div class="status-item">
+            ACCESS
+            <strong>OPEN LEARNING</strong>
+        </div>
+    </div>
+</div>
+
+<section class="section container" id="services">
+
+    <div class="section-label">/ WHAT YOU CAN EXPLORE</div>
+
+    <h2 class="section-heading">
+        Explore The Lab<span style="color:#b6ff5c">.</span>
+    </h2>
+
+    <p class="section-description">
+        Learn the foundations of modern web security
+        through structured and controlled practice.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-number">01 / NETWORK</div>
+            <h3>HTTP Fundamentals</h3>
+            <p>
+                Understand requests, responses,
+                methods, headers and status codes.
+            </p>
+            <span class="card-arrow">LEARN MORE ↗</span>
+        </div>
+
+        <div class="card">
+            <div class="card-number">02 / API</div>
+            <h3>API Exploration</h3>
+            <p>
+                Understand endpoints, JSON data
+                and API communication.
+            </p>
+            <span class="card-arrow">LEARN MORE ↗</span>
+        </div>
+
+        <div class="card">
+            <div class="card-number">03 / SECURITY</div>
+            <h3>Security Basics</h3>
+            <p>
+                Explore authentication, validation
+                and common web security concepts.
+            </p>
+            <span class="card-arrow">LEARN MORE ↗</span>
+        </div>
+
+        <div class="card">
+            <div class="card-number">04 / ANALYSIS</div>
+            <h3>Request Analysis</h3>
+            <p>
+                Learn to inspect HTTP traffic
+                and understand server responses.
+            </p>
+            <span class="card-arrow">LEARN MORE ↗</span>
+        </div>
+
+        <div class="card">
+            <div class="card-number">05 / WEB</div>
+            <h3>Web Technologies</h3>
+            <p>
+                Understand HTML, CSS, JavaScript
+                and browser communication.
+            </p>
+            <span class="card-arrow">LEARN MORE ↗</span>
+        </div>
+
+        <div class="card">
+            <div class="card-number">06 / PRACTICE</div>
+            <h3>Security Challenges</h3>
+            <p>
+                Develop problem-solving skills
+                using designated educational exercises.
+            </p>
+            <span class="card-arrow">COMING SOON ↗</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section container" id="about">
+
+    <div class="about-box">
+        <div>
+            <div class="section-label">/ OUR MISSION</div>
+            <h2>
+                Learn.<br>
+                Understand.<br>
+                <span>Secure.</span>
+            </h2>
+        </div>
+
+        <p>
+            Adarsh Security Lab is an independent educational
+            project created to explore cybersecurity,
+            web technologies and ethical security testing.
+
+            Our goal is to understand systems, learn how
+            security works and develop responsible
+            cybersecurity skills.
+        </p>
+    </div>
+
+    <div class="notice">
+        <h3>AUTHORIZED TESTING POLICY</h3>
+        <p>
+            This project is an educational platform.
+            Security testing is permitted only on explicitly
+            designated lab challenges and systems for which
+            permission has been granted. External systems
+            are not included in this authorization.
+        </p>
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    <div class="container footer-inner">
+        <div>ADARSH_SECURITY_LAB © <span id="year"></span></div>
+        <div>BUILT FOR LEARNING. DESIGNED FOR SECURITY.</div>
+    </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+// Terminal text reveal
+const terminalLines = document.querySelectorAll(".terminal-line");
+
+terminalLines.forEach((line, index) => {
+    line.style.opacity = "0";
+    line.style.transform = "translateY(5px)";
+
+    setTimeout(() => {
+        line.style.transition = "all 0.4s ease";
+        line.style.opacity = "1";
+        line.style.transform = "translateY(0)";
+    }, 300 + index * 250);
+});
+
+// Card interaction
+document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+        const title = card.querySelector("h3").textContent;
+        console.log("Selected learning module:", title);
+    });
+});
+</script>
+
+</body>
+</html>
